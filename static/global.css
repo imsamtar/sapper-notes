@@ -23,7 +23,7 @@ a:hover, button:hover {
 	opacity: 0.9;
 }
 .overlay {
-	width: 100%;
+	width: 90%;
 	height: 100vh;
 	position: absolute;
 	top: 0;

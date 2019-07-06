@@ -1,17 +1,22 @@
-import sirv from 'sirv';
-import polka from 'polka';
+import express from 'express';
+import mongoose from 'mongoose';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
 
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
-polka() // You can also use Express
-	.use(
+mongoose.connect('mongodb://localhost:27017/randomdb', { useNewUrlParser: true });
+
+const app = express(); // You can also use Express
+	
+app.use(
 		compression({ threshold: 0 }),
-		sirv('static', { dev }),
+		express.json(),
+		express.static('static'),
 		sapper.middleware()
-	)
-	.listen(PORT, err => {
+	);
+
+app.listen(PORT, err => {
 		if (err) console.log('error', err);
 	});

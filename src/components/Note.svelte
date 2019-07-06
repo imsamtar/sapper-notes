@@ -16,6 +16,8 @@
     }
     .title {
         border-bottom: 1px solid lightgray ;
+        font-size: 1.3rem;
+        font-weight: 700;
     }
 
     .actions {

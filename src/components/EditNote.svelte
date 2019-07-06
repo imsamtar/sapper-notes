@@ -15,10 +15,12 @@
     .note {
         position: fixed;
         top: 100px;
-        left: calc(50% - 15rem);
-        min-width: 250px;
+        left: 50%;
+        min-width: 270px;
+        max-width: 500px;
         min-height: 250px;
-        width: 30rem;
+        width: calc(100% - 2rem);
+        transform: translateX(-50%);
         background: white;
         border: 3px solid gray;
         border-radius: 0.5rem;
@@ -26,6 +28,9 @@
         display: grid;
         grid-template-rows: 2rem auto 2rem;
         grid-gap: 1px;
+    }
+    .note > * {
+        width: 100%;
     }
     .title {
         border-bottom: 1px solid gray;

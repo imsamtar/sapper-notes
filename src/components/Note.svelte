@@ -5,7 +5,6 @@
 </script>
 <style>
     .note {
-        min-width: 250px;
         min-height: 250px;
         background: white;
         border-radius: 0.5rem;
@@ -16,6 +15,8 @@
     }
     .title {
         border-bottom: 1px solid lightgray ;
+        font-size: 1.3rem;
+        font-weight: 700;
     }
 
     .actions {

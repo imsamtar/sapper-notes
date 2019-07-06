@@ -24,7 +24,6 @@ a:hover, button:hover {
 }
 .overlay {
 	width: 90%;
-	height: 100vh;
 	position: absolute;
 	top: 0;
 	z-index: 99;

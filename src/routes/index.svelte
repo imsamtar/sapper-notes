@@ -15,6 +15,7 @@
 		grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
 		grid-gap: 0.5rem;
 	}
+	
 </style>
 <CreateNote on:edit={() => {}} on:done={(e) => {if(e.detail.title!='' || e.detail.desc!='')notes=[...notes,e.detail]}}/>
 <section id="notes">

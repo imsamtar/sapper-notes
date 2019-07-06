@@ -5,7 +5,6 @@
 </script>
 <style>
     .note {
-        min-width: 250px;
         min-height: 250px;
         background: white;
         border-radius: 0.5rem;

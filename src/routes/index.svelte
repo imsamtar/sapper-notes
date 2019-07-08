@@ -17,6 +17,11 @@
 	}
 	
 </style>
+
+<svelte:head>
+	<title>Sapper Notes - Demo Web Application</title>
+</svelte:head>
+
 <CreateNote on:edit={() => {}} on:done={(e) => {if(e.detail.title!='' || e.detail.desc!='')notes=[...notes,e.detail]}}/>
 <section id="notes">
 {#each notes as note,index}

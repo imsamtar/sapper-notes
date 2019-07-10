@@ -1,11 +1,23 @@
 <script>
+    import {goto} from '@sapper/app';
     let user = {
         username: '',
         password: ''
     }
+    let loading = false;
     
-    function login(e){
+    async function login(e){
         e.preventDefault();
+        loading = true;
+        try{
+            let r = await fetch('/auth/login.json', {method: 'POST', body: JSON.stringify(user), headers:{'Content-Type': 'application/json'}})
+            let res = await r.json();
+            loading = false;
+            if(res.ok) goto('/');
+        }catch(err){
+            console.error(err);
+        }
+        loading = false;
     }
 </script>
 
@@ -39,6 +51,7 @@ form > * {
         required="true" >
 
     <input
+        disabled={loading}
         type="submit"
         value="Login" >
     <p>Don't have an account? <a href="auth/signup">Signup</a></p>

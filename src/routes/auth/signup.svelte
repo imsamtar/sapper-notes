@@ -1,4 +1,5 @@
 <script>
+    import {goto} from '@sapper/app';
     let user = {
         name: '',
         username: '',
@@ -6,9 +7,24 @@
         password: '',
         confirmPassword: ''
     }
+    let loading = false;
 
-    function signup(e){
+    async function signup(e){
         e.preventDefault();
+        loading = true;
+        try{
+            if(user.password === user.confirmPassword){
+                delete user["confirmPassword"];
+                let r = await fetch('/auth/signup.json', {method: 'POST', body: JSON.stringify(user), headers:{'Content-Type': 'application/json'}})
+                let res = await r.json();
+                loading = false;
+                if(res.ok) goto('/auth/login');
+            }
+        }catch(err){
+            console.error(err);
+            loading = false;
+        }
+        loading = false;
     }
 </script>
 
@@ -59,6 +75,7 @@ form > * {
         required="true" >
 
     <input
+        disabled={loading}
         type="submit"
         value="Signup" >
     <p>Already have an account? <a href="auth/login">Login</a></p>

@@ -6,7 +6,7 @@
         password: '',
         confirmPassword: ''
     }
-    document.title = 'Signup - Sapper Note';
+
     function signup(e){
         e.preventDefault();
     }
@@ -23,6 +23,11 @@ form > * {
     padding: 6px 10px
 }
 </style>
+
+<svelte:head>
+    <title>Signup - Sapper Note</title>
+</svelte:head>
+
 <form on:submit={signup}>
     <input 
         bind:value={user.name}

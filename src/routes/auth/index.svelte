@@ -1,7 +1,3 @@
-<script>
-    import {onMount} from 'svelte';
-    document.title = 'Login - Sapper Note';
-</script>
 <style>
 div {
     --h: 15rem;
@@ -29,6 +25,11 @@ div > a {
     }
 }
 </style>
+
+<svelte:head>
+    <title>Login - Sapper Note</title>
+</svelte:head>
+
 <div>
     <a href="/auth/login">Login</a>
     <a href="/auth/signup">Signup</a>

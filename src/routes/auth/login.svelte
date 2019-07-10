@@ -3,7 +3,7 @@
         username: '',
         password: ''
     }
-    document.title = 'Login - Sapper Note';
+    
     function login(e){
         e.preventDefault();
     }
@@ -20,6 +20,11 @@ form > * {
     padding: 6px 10px
 }
 </style>
+
+<svelte:head>
+    <title>Login - Sapper Note</title>
+</svelte:head>
+
 <form on:submit={login}>
     <input 
         bind:value={user.username}

@@ -20,6 +20,9 @@ a {
 	filter: blur(10px) grayscale(0.8);
     user-select: none;
 }
+a {
+	user-select: none;
+}
 a:hover, button:hover {
 	opacity: 0.9;
 }

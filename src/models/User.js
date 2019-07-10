@@ -21,7 +21,7 @@ export default mongoose.model('User', mongoose.Schema({
         unique: true
     },
     notes: [{
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Note'
     }]
 }))

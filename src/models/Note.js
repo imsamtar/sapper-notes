@@ -8,7 +8,7 @@ export default mongoose.model('Note', mongoose.Schema({
         type: String
     },
     author: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
 }))

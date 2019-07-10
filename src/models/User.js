@@ -22,10 +22,10 @@ const UserSchema = mongoose.Schema({
         unique: true
     },
     notes: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Note'
+        title: String,
+        desc: String
     }]
-});
+})
 
 UserSchema.plugin(uniqueValidator);
 

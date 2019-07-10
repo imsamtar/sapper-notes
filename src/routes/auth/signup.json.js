@@ -6,16 +6,18 @@ export async function post(req, res){
     try{
         let { name, username, email, password } = req.body;
         password = await bcrypt.hash(password, 12);
-        let user = { name, username, email, password };
+        let user = { name, username, email, password, notes: [] };
         user = await new User(user).save();
         user['password'] = undefined;
-        res.send({
+        console.log(user);
+        res.json({
             ok: true,
             user
         });
     }catch(err){
-        res.send({
-            ok: false
+        res.json({
+            ok: false,
+            err
         });
     }
 }

@@ -17,6 +17,8 @@
                 delete user["confirmPassword"];
                 let r = await fetch('/auth/signup.json', {method: 'POST', body: JSON.stringify(user), headers:{'Content-Type': 'application/json'}})
                 let res = await r.json();
+                console.log(res);
+                
                 loading = false;
                 if(res.ok) goto('/auth/login');
             }

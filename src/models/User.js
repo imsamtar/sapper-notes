@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
-export default mongoose.model('User', mongoose.Schema({
+const UserSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -24,4 +25,8 @@ export default mongoose.model('User', mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Note'
     }]
-}))
+});
+
+UserSchema.plugin(uniqueValidator);
+
+export default mongoose.model('User', UserSchema);

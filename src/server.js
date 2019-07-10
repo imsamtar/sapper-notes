@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
+import session from 'express-session';
 
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
@@ -14,7 +15,14 @@ app.use(
 		compression({ threshold: 0 }),
 		express.json(),
 		express.static('static'),
-		sapper.middleware()
+		session({
+			secret: 'thisisasuppersecret',
+			saveUninitialized: false,
+			resave: false
+		}),
+		sapper.middleware({
+			session: req => ({ user: req.session.user })
+		})
 	);
 
 app.listen(PORT, err => {

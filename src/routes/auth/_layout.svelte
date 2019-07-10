@@ -17,6 +17,7 @@
         width: 100%;
     }
 </style>
+
 <section>
     <h1>Authentication</h1>
     <div>

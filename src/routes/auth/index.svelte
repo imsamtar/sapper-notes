@@ -1,8 +1,6 @@
 <script>
     import {onMount} from 'svelte';
-    onMount(() => {
-
-    });
+    document.title = 'Login - Sapper Note';
 </script>
 <style>
 div {

@@ -1,3 +1,14 @@
+<script>
+    let user = {
+        username: '',
+        password: ''
+    }
+    document.title = 'Login - Sapper Note';
+    function login(e){
+        e.preventDefault();
+    }
+</script>
+
 <style>
 form > input {
     display: block;
@@ -9,9 +20,21 @@ form > * {
     padding: 6px 10px
 }
 </style>
-<form action="">
-    <input type="text" placeholder="Username: ">
-    <input type="password" placeholder="Password: ">
-    <input type="submit" value="Login" placeholder="Username: ">
+<form on:submit={login}>
+    <input 
+        bind:value={user.username}
+        type="text" placeholder="Username: "
+        minlength="6"
+        required="true" >
+
+    <input 
+        bind:value={user.password}
+        type="password" placeholder="Password: "
+        minlength="6"
+        required="true" >
+
+    <input
+        type="submit"
+        value="Login" >
     <p>Don't have an account? <a href="auth/signup">Signup</a></p>
 </form>

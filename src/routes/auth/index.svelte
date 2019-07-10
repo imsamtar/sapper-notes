@@ -3,7 +3,8 @@ div {
     --h: 15rem;
     height: var(--h);
     width: calc(2 * var(--h));
-    margin: 0 auto;
+    min-width: 90%;
+    margin: 20px auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;

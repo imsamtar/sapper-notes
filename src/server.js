@@ -4,10 +4,10 @@ import compression from 'compression';
 import * as sapper from '@sapper/server';
 import session from 'express-session';
 
-const { PORT, NODE_ENV } = process.env;
+const { PORT, NODE_ENV, DBLINK } = process.env;
 const dev = NODE_ENV === 'development';
 
-mongoose.connect('mongodb://localhost:27017/randomdb', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
+mongoose.connect(DBLINK || 'mongodb://localhost:27017/randomdb', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
 
 const app = express(); // You can also use Express
 	

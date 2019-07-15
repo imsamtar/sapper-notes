@@ -41,7 +41,7 @@
 	<title>Sapper Notes - Demo Web Application</title>
 </svelte:head>
 
-<button on:click={save}>Save</button>
+<!-- <button on:click={save}>Save</button> -->
 <CreateNote on:edit={() => {}} on:done={(e) => {if(e.detail.title!='' || e.detail.desc!=''){notes=[...notes,e.detail];save()}}}/>
 <section id="notes">
 {#each notes as note,index}

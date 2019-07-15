@@ -1,5 +1,5 @@
 <script>
-	import {user} from '../store.js';
+	import {user, commit} from '../store.js';
 	import {onMount} from 'svelte';
 	import {goto} from '@sapper/app';
 	import CreateNote from '../components/CreateNote.svelte';
@@ -23,17 +23,8 @@
 		})
 		.catch(err => console.error(err));
 	});
-
 	function save(){
-		fetch('/user.json', {
-			method: 'PATCH',
-			body: JSON.stringify({notes: notes}),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		}).then(r => r.json())
-		.then(j => console.log(j))
-		.catch(err => console.error(err))
+		return commit(notes);
 	}
 	
 </script>
@@ -51,12 +42,12 @@
 </svelte:head>
 
 <button on:click={save}>Save</button>
-<CreateNote on:edit={() => {}} on:done={(e) => {if(e.detail.title!='' || e.detail.desc!='')notes=[...notes,e.detail]}}/>
+<CreateNote on:edit={() => {}} on:done={(e) => {if(e.detail.title!='' || e.detail.desc!=''){notes=[...notes,e.detail];save()}}}/>
 <section id="notes">
 {#each notes as note,index}
-	<Note {note} on:edit={() => {editindex=index;editmode=true}} on:del={() => notes=notes.filter((n,i)=>i!=index)} ></Note>
+	<Note {note} on:edit={() => {editindex=index;editmode=true;save()}} on:del={() => {notes=notes.filter((n,i)=>i!=index);save()}} ></Note>
 {/each}
 </section>
 {#if editmode}
-	<EditNote bind:note={notes[editindex]} on:exit={() => editmode=false} />
+	<EditNote bind:note={notes[editindex]} on:exit={() => {editmode=false;save()}} />
 {/if}

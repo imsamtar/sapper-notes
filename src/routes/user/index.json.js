@@ -14,7 +14,7 @@ export function get(req, res){
 
 export function patch(req, res){
     if(req.session.user){
-        console.log(req.body);
+        // console.log(req.body);
         User.updateOne({_id: req.session.user}, { 
             $set: { notes: req.body.notes }
         })

@@ -9,7 +9,7 @@ export async function post(req, res){
         let user = { name, username, email, password, notes: [] };
         user = await new User(user).save();
         user['password'] = undefined;
-        console.log(user);
+        // console.log(user);
         res.json({
             ok: true,
             user
